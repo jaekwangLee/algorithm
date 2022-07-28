@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(s, t) {
+            let answer = [];
+
+            // O(N)2
+            // for (let i = 0; i < s.length; i++) {
+            //     if (s[i] === t) {
+            //         answer.push(0);
+            //         continue;
+            //     }
+
+            //     for (let j = 1; j < s.length; j++) {
+            //         if (i + j > s.length) {
+            //             break;
+            //         }
+
+            //         if (s[i + j] === t || s[i - j] === t) {
+            //             answer.push(j)
+            //             break;
+            //         }
+            //     }
+            // }
+
+            // O(N)
+            let distance = 1000;
+            for (let char of s) {
+                if (char === t) {
+                    distance = 0;
+                    answer.push(0)
+                } else {
+                    distance++;
+                    answer.push(distance)
+                }
+            }
+
+            distance = 1000;
+            for (let i = s.length - 1; i >= 0; i--) {
+                if (s[i] === t) {
+                    distance = 0;
+                    answer[i] = 0;
+                } else {
+                    distance++;
+                    answer[i] = Math.min(answer[i], distance)
+                }
+            }
+
+            return answer;
+        }
+
+        let str = "teachermode";
+        console.log(solution(str, 'e'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(s) {
+            const str = s.toLowerCase();
+            let answer = 'YES';
+            let halfLen = Math.floor(s.length / 2);
+
+            for (i = 0; i < halfLen; i++) {
+                if (str[i] !== str[str.length - i - 1]) {
+                    answer = 'NO'
+                    break;
+                }
+            }
+
+            return answer;
+        }
+
+        let str = "goooG";
+        console.log(solution(str));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(s) {
+            let answer = "YES";
+            const str = s.toLowerCase().replace(/[^a-z]/g, '');
+            console.log(str)
+            const halfLen = Math.floor(str.length / 2);
+
+            // for (i = 0; i < halfLen; i++) {
+            //     if (str[i] !== str[str.length - i - 1]) {
+            //         answer = 'NO';
+            //         break;
+            //     }
+            // }
+
+            // or
+
+            if (str.split('').reverse().join('') !== str) {
+                answer = 'NO'
+            }
+
+            return answer;
+        }
+
+        let str = "found7, time: study; Yduts; emit, 7Dnuof";
+        console.log(solution(str));
+    </script>
+</body>
+
+</html>

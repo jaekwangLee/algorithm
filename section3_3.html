@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+
+<body>
+    <script>
+        function solution(str) {
+            let answer = "";
+
+            // solution - 3
+            answer = 0;
+
+            for (let char of str) {
+                // solution - 1
+                // if (char.charCodeAt() >= 48 && char.charCodeAt() <= 57) {
+                //     answer += char;
+                // }
+
+                // or
+                // solution - 2
+                // if (!isNaN(char)) {
+                //     answer += char;
+                // }
+
+                // or
+                // solution - 3
+                if (!isNaN(char)) {
+                    answer = (answer * 10) + Number(char);
+                }
+            }
+
+            return parseInt(answer);
+        }
+
+        let str = "g0en2T0s8eSoft";
+        console.log(solution(str));
+    </script>
+</body>
+
+</html>
