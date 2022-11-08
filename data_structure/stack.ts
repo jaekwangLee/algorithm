@@ -1,35 +1,40 @@
-interface StackNode {
+type StackNode = {
   next?: StackNode;
   value: string;
+};
+
+interface Stack {
+  push(value: string): void;
+  pop(): string;
 }
 
-class Stack {
-  private valueStr: StackNode = {
+class StackImple implements Stack {
+  private head: StackNode = {
     next: undefined,
     value: "",
   };
 
   push(value: string) {
-    this.valueStr = {
-      next: this.valueStr,
-      value,
-    };
+    const node = { next: this.head, value };
+    this.head = node;
   }
 
   pop() {
-    if (!this.valueStr || !this.valueStr.value) {
-      throw new Error("no exist value");
+    if (!this.head || !this.head.value) {
+      throw new Error("Stack is empty");
     }
-    const topValue = this.valueStr.value;
-    this.valueStr = this.valueStr.next || {
+
+    const topValue = this.head.value;
+    this.head = this.head.next || {
       next: undefined,
       value: "",
     };
+
     return topValue;
   }
 }
 
-const stack = new Stack();
+const stack = new StackImple();
 stack.push("123");
 stack.push("456");
 stack.push("789");
